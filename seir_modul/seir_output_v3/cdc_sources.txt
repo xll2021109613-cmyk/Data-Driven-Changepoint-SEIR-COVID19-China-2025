@@ -1,0 +1,6 @@
+China CDC sources used for provenance / monthly validation:
+- May 2025: https://www.chinacdc.cn/jksj/xgbdyq/202506/t20250605_307356.html
+- June 2025: https://www.chinacdc.cn/jksj/xgbdyq/202507/t20250703_308176.html
+- July 2025: https://www.chinacdc.cn/jksj/xgbdyq/202508/t20250806_309202.html
+- August 2025: https://www.chinacdc.cn/jksj/xgbdyq/202509/t20250905_310229.html
+- September 2025: https://www.chinacdc.cn/jksj/xgbdyq/202510/t20251011_312903.html

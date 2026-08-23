@@ -1,0 +1,59 @@
+SEIR v3 redesigned analysis
+============================
+
+DATA
+- 153 daily observations: 2025-05-01 to 2025-09-30
+- Fit variable: Adjusted_Cases
+- Main fit uses adjusted raw daily cases.
+- 7-day moving average is visualization only.
+
+PRIMARY MODEL DESIGN
+- Baseline free parameters: beta, E0 nuisance multiplier, I0 nuisance multiplier (k=3)
+- Free-change-point model: beta1, beta2, E0 nuisance multiplier, I0 nuisance multiplier + tc (k=5)
+- Main biological assumptions: latent=3 days; infectious=5 days
+- q=0.30 is an observation scaling factor, NOT an estimated infection-reporting probability.
+
+DATA-DRIVEN CHANGE POINT
+- AIC-selected tc = 2025-05-24
+- beta1 = 0.279946
+- beta2 = 0.175107
+- R_before = 1.3997
+- R_after  = 0.8755
+
+MODEL COMPARISON
+- Baseline: R2=0.6686; RMSE=2955.40; AIC=2451.36; BIC=2460.46
+- Free-tc piecewise: R2=0.8687; RMSE=1860.34; AIC=2313.72; BIC=2328.88
+
+STATISTICAL TESTING
+- Primary free-tc model comparison uses AIC/BIC rather than an ordinary chi-square LRT.
+- Reason: tc is not identified under the constant-beta null, violating the usual regular LRT assumptions.
+- Secondary/reference LRT for fixed May 26 model only:
+  statistic=126.047; df=1; p=3.003e-29
+
+ROBUSTNESS
+- Cut-point sensitivity (May20/23/26/29/Jun1): all R_before>1 and R_after<1 = True
+- q sensitivity (0.10/0.30/0.50/0.70/0.99): all R_before>1 and R_after<1 = True
+- Biological sensitivity (2/3/4 x 4/5/7 days): 9/9 scenarios have R_before>1 and R_after<1; all 9 = True
+- Biological-sensitivity R2 range = -0.340 to 0.869; poor-fitting extreme scenarios should be reported rather than hidden.
+
+PEAK CONSISTENCY — NOT EXTERNAL VALIDATION
+- Observed peak: 2025-05-26 (22684 cases/day)
+- Model peak: 2025-05-23 (20384 cases/day)
+- CDC May 26 date is contextual information only and was NOT used to choose the primary tc.
+
+RELAXED-BOUND DIAGNOSTIC
+- latent=2.999 days (near 1–7 day boundary? False)
+- infectious=4.999 days (near 3–10 day boundary? False)
+- This diagnostic assesses identifiability; these fitted values should NOT be presented as precise biological truths.
+
+RESIDUAL DIAGNOSTICS
+- Mean weekend residual = -1866.1
+- Mean weekday residual = 622.0
+- Welch weekend-vs-weekday p = 2.110e-15
+- Lag-7 residual correlation = 0.701
+- Durbin-Watson = 1.000
+
+CORE CLAIM TO REPORT
+The preferred model supports a transition from a growth regime (R>1) to a decline regime (R<1).
+This conclusion is stable to change-point and q assumptions and should be qualified by the full biological-sensitivity results.
+Do not present q, latent period, infectious period, E0, or I0 as precisely identified biological truths.

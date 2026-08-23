@@ -1,0 +1,137 @@
+SEIR v4 unified daily_cases analysis
+====================================
+
+DATA
+- 153 daily observations
+- 2025-05-01 to 2025-09-30
+- Fit variable: daily_cases
+- Input file: seir_cleaned.csv
+- 7-day moving average is visualization only.
+
+OBSERVED DATA
+- Observed peak:
+  2025-05-26
+  (22735 cases/day)
+
+PRIMARY MODEL DESIGN
+- Baseline:
+  beta + E0 nuisance multiplier + I0 nuisance multiplier
+  k=3
+
+- Free-change-point model:
+  beta1 + beta2 + E0 nuisance multiplier
+  + I0 nuisance multiplier + tc
+  k=5
+
+- Latent period:
+  3 days
+
+- Infectious period:
+  5 days
+
+- q:
+  0.30
+
+q is an observation scaling factor,
+NOT a directly estimated infection reporting probability.
+
+DATA-DRIVEN CHANGE POINT
+- Estimated tc:
+  2025-05-24
+
+- beta1:
+  0.280118
+
+- beta2:
+  0.174493
+
+- R_before:
+  1.4006
+
+- R_after:
+  0.8725
+
+MODEL COMPARISON
+- Baseline:
+  R2=0.6689
+  RMSE=2959.03
+  AIC=2451.74
+  BIC=2460.83
+
+- Free change-point:
+  R2=0.8690
+  RMSE=1861.07
+  AIC=2313.85
+  BIC=2329.00
+
+STATISTICAL TESTING
+- Primary free-tc comparison:
+  use AIC/BIC rather than ordinary chi-square LRT.
+
+- Fixed May 26 reference LRT only:
+  statistic=140.260
+  df=1
+  p=2.336e-32
+
+ROBUSTNESS
+- Change-point sensitivity:
+  all R_before>1 and R_after<1 = True
+
+- q sensitivity:
+  all R_before>1 and R_after<1 = True
+
+- Biological sensitivity:
+  9/9 scenarios satisfy
+  R_before>1 and R_after<1
+
+- Biological sensitivity R2 range:
+  -0.295
+  to
+  0.869
+
+PEAK CONSISTENCY
+- Observed peak:
+  2025-05-26
+
+- Model peak:
+  2025-05-23
+
+The observed peak is NOT used to choose tc.
+
+RELAXED-BOUND DIAGNOSTIC
+- latent:
+  3.000 days
+
+- infectious:
+  5.000 days
+
+- latent near boundary:
+  False
+
+- infectious near boundary:
+  False
+
+RESIDUAL DIAGNOSTICS
+- Mean weekend residual:
+  -1793.8
+
+- Mean weekday residual:
+  690.0
+
+- Welch p:
+  6.694e-15
+
+- Lag-7 residual correlation:
+  0.701
+
+- Durbin-Watson:
+  0.998
+
+CORE CLAIM
+The preferred model supports a transition
+from a growth regime (R>1)
+to a decline regime (R<1).
+
+Do not interpret q, latent period,
+infectious period, E0, or I0
+as precisely identified biological truths.
