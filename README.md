@@ -15,5 +15,4 @@ Data-driven changepoint SEIR model fitted to China's 2025 COVID-19 wave using of
 - **Robustness:** conclusions hold across all 19 sensitivity scenarios (5 changepoints × 5 observation-scale factors × 9 biological parameter combinations)
 - **Residual diagnostics:** significant weekly reporting cycle (weekend vs. weekday, Welch p < 0.001; lag-7 autocorrelation 0.70)
 
-## Repository Structure
 
