@@ -1,0 +1,8 @@
+﻿Indicator,Timing,Interpretation
+SEIR original change point,"May 24, 2025",Original-data point estimate; not replaced by bootstrap results.
+SEIR model-predicted peak,"May 23, 2025",Automatically identified from V4 daily predictions.
+Observed reported-case peak,"May 26, 2025",Automatically identified from V4 daily observations.
+Sentinel positivity peak,"May 19-25, 2025",May 24 (SEIR change point) falls within the sentinel positivity peak week (May 19-25): TRUE
+May 24 within sentinel positivity peak week,TRUE,May 24 (SEIR change point) falls within the sentinel positivity peak week (May 19-25): TRUE
+Bootstrap median change point,"May 23, 2025",Based on 500 successful V5 replicates.
+Bootstrap 95% change-point interval,"May 19, 2025 to Jun 01, 2025","Percentile interval; displayed as uncertainty, not used for refitting."

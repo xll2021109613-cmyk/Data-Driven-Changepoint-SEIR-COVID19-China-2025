@@ -1,0 +1,44 @@
+External validation using China CDC sentinel positivity
+========================================================
+
+DATA AND ALIGNMENT
+- Number of complete aligned weeks: 21
+- Sentinel positivity column: 'Positive Rate of virus '
+- Week parsing: interval/date column 'Date'
+- Positivity input scale: percentage strings; percent sign removed and values divided by 100
+- Primary case aggregation for analysis: weekly mean over each stated Excel interval
+- Z-scores are computed within the overlapping weeks only (weeks present in all three series), not over each series' full length.
+- Excluded rows/weeks: None
+
+TURNING-POINT COMPARISON
+- Original SEIR change point: 2025-05-24
+- Observed reported-case peak: 2025-05-26
+- SEIR model-predicted peak: 2025-05-23
+- Sentinel positivity peak week: 2025-05-19 to 2025-05-25 (23.800%)
+- May 24 lies within sentinel positivity peak week: TRUE
+- V5 bootstrap median change point: 2025-05-23
+- V5 bootstrap percentile 95% interval: 2025-05-19 to 2025-06-01
+- Successful V5 replicates used: 500
+
+PRIMARY SPEARMAN CORRELATIONS (weekly mean)
+- Positivity vs observed cases: rho=0.9821, p=3.039e-15, n=21
+- Positivity vs SEIR-predicted cases: rho=0.9756, p=5.643e-14, n=21
+- Correlations describe temporal association, not causation.
+
+FIRST-DIFFERENCE ROBUSTNESS ANALYSIS
+- Differences are calculated between consecutive aligned weeks: delta X_t = X_t - X_(t-1).
+- Spearman rho(delta positivity, delta observed cases): rho=0.6110, p=0.004212, n=20
+- Spearman rho(delta positivity, delta SEIR-predicted cases): rho=0.3506, p=0.1296, n=20
+- This robustness analysis tests whether short-term week-to-week changes remain synchronized after removing the shared level trend; it does not imply causation.
+
+EXPLORATORY LAG ANALYSIS
+- Lag convention: positive lag compares positivity at week t with cases at week t+lag.
+- Strongest observed-case association: lag=+0, rho=0.9821, p=3.039e-15, n=21
+- Strongest predicted-case association: lag=+0, rho=0.9756, p=5.643e-14, n=21
+- This lag analysis is exploratory. It does not establish a biological or reporting delay.
+
+EXPECTED PLOT BEHAVIOR
+Because the SEIR model was fitted to the observed cases, the observed and predicted case lines in the z-score plot may largely overlap. This is expected and not an error.
+
+INTERPRETATION
+The sentinel positivity series was not used in model fitting. Temporal agreement therefore provides additional surveillance-based support for a broad late-May transition, but should not be interpreted as fully independent causal validation or as proof of May 24 exactly.

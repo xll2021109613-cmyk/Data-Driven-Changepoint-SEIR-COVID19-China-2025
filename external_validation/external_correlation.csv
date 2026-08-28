@@ -1,0 +1,3 @@
+﻿comparison,rho,p_value,n_weeks
+Sentinel positivity vs weekly observed cases,0.9821259136573226,3.0394922145673e-15,21
+Sentinel positivity vs weekly SEIR-predicted cases,0.9756260730639585,5.6430625008341876e-14,21

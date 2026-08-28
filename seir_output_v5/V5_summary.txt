@@ -1,0 +1,37 @@
+SEIR V5: 7-day block bootstrap uncertainty
+================================================
+
+DESIGN
+- Original point-estimate logic: unchanged from V4
+- Residual bootstrap: calendar-aligned consecutive 7-day blocks
+- Every replicate re-searches the free change point
+- Requested replicates: 500
+- Successful replicates: 500
+- Failed replicates: 0
+- Success rate: 100.0%
+
+ORIGINAL-DATA POINT ESTIMATES (not replaced by bootstrap medians)
+- Change point: 2025-05-24
+- beta1: 0.280118
+- beta2: 0.174493
+- R_before: 1.4006
+- R_after: 0.8725
+
+PERCENTILE 95% BOOTSTRAP INTERVALS
+- beta1: 0.280118 (95% CI 0.172134 to 0.290223)
+- beta2: 0.174493 (95% CI 0.170401 to 0.180577)
+- R_before: 1.4006 (95% CI 0.8607 to 1.4511)
+- R_after: 0.8725 (95% CI 0.8520 to 0.9029)
+
+CHANGE-POINT UNCERTAINTY
+- Original change point: 2025-05-24
+- Bootstrap median date: 2025-05-23
+- Percentile 95% interval: 2025-05-19 to 2025-06-01
+
+THRESHOLD PROBABILITIES
+- P(R_before > 1): 0.9360
+- P(R_after < 1): 1.0000
+
+NOTE
+B=20 is a pipeline/debug run and should not be reported as final inference.
+For the planned final run, use --bootstrap-replicates 500.
